@@ -1,4 +1,6 @@
 import sys
+
+
 count = 0;
 prev_word = None
 for line in sys.stdin:
@@ -13,3 +15,5 @@ for line in sys.stdin:
     
     count = count + int(cur_count)
 print '\t'.join([prev_word, str(count)])
+
+
