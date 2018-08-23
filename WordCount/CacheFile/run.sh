@@ -8,9 +8,9 @@ OUTPUT_PATH="/output"
 /root/hadoop-1.2.1/bin/hadoop jar $STREAM_JAR_PATH \
         -input $INPUT_FILE_PATH \
         -output $OUTPUT_PATH \
-        -mapper "python map.py map_func white_list" \
+        -mapper "python map.py map_func ABC" \
         -reducer "python reduce.py" \
         -jobconf "mapred.reduce.tasks=3" \
+        -cacheFile "hdfs://master:9000/white_list#ABC" \
         -file ./map.py \
-        -file ./reduce.py \
-        -file ./white_list 
+        -file ./reduce.py
