@@ -8,9 +8,13 @@ OUTPUT_PATH="/output"
 /root/hadoop-1.2.1/bin/hadoop jar $STREAM_JAR_PATH \
         -input $INPUT_FILE_PATH \
         -output $OUTPUT_PATH \
-        -mapper "python map.py map_func ABC.tar.gz" \
+        -mapper "python map.py map_func ABC.gz" \
         -reducer "python reduce.py" \
         -jobconf "mapred.reduce.tasks=3" \
-        -cacheArchive "hdfs://master:9000/w.tar.gz#ABC.tar.gz" \
+        -jobconf "mapred.compress.map.output=true" \
+        -jobconf "mapred.map.output.compression.codec=org.apach.hadoop.io.compress.GzipCodec" \
+        -jobconf "mapred.compress.output=true" \
+        -jobconf "mapred.output.compression.codec=org.apach.hadoop.io.compress.GzipCodec" \
+        -cacheArchive "hdfs://master:9000/white_list1.gz#ABC.gz" \
         -file ./map.py \
         -file ./reduce.py
