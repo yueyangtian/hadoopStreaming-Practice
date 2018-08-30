@@ -1,0 +1,5 @@
+0 hadoop
+4 hadoop
+2 hadoop
+8 hadoop
+6 hadoop
